@@ -29,7 +29,7 @@ class controladorBD:
         else:
             cursor=conx.cursor()
             datos=(nom,cor,con)
-            qrInsert = "insert into TBRestrados(Nombre,Correo,Contraseña)  values(?,?,?)"
+            qrInsert = "insert into TBRegistrados(Nombre,Correo,Contraseña)  values(?,?,?)"
 
             cursor.execute(qrInsert,datos)
             conx.commit()
