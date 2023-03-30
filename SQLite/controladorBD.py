@@ -42,6 +42,25 @@ class controladorBD:
         sal= bcrypt.gensalt()
         conHa= bcrypt.hashpw(conPlana,sal)
         return conHa
+    
+    def consultarUsuario(self,id):
+        conx=self.conexionBD()
+        
+        if (id==""):
+            messagebox.showwarning("Cuidad","ID vacia")
+        else:
+            try:
+
+                cursor=conx.cursor()
+                selectQry="Select * from TBRegistrados where id="+id
+
+                cursor.execute(selectQry)
+                rsUsuario= cursor.fetchall()
+
+                return rsUsuario
+
+            except sqlite3.OperationalError:
+                print("Error Consulta")
             
 
 
