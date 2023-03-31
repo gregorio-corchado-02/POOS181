@@ -56,7 +56,7 @@ class controladorBD:
 
                 cursor.execute(selectQry)
                 rsUsuario= cursor.fetchall()
-
+                conx.close()
                 return rsUsuario
 
             except sqlite3.OperationalError:
