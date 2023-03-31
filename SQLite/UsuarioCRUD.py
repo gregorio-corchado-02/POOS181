@@ -17,7 +17,7 @@ def ejecutaselectu():
         print(cadena)
     else:
         messagebox.showinfo("usuario no encontrado","usuario no existe en la BD")
-    textenc.insert(tk.INSERT,cadena)
+    txtenc.insert(tk.INSERT,cadena)
  
 ventana = tk.Tk()
 ventana.title("Crud de usuarios")
@@ -67,8 +67,8 @@ txtid.pack()
 btnBus = tk.Button(pestaña2, text="Buscar", command=ejecutaselectu).pack()
 
 subBus = tk.Label(pestaña2, text="Encontrado",fg="blue",font=("Modern",15)).pack()
-textenc=tk.Text(pestaña2,height=5,width=52)
-textenc.pack()
+txtenc=tk.Text(pestaña2,height=5,width=52)
+txtenc.pack()
 
 panel.add(pestaña1, text='Formulario de usuarios')
 panel.add(pestaña2, text='Buscar Usuarios')
