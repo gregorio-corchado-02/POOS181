@@ -14,11 +14,20 @@ def ejecutaselectu():
     for usu in usuario:
         cadena=str(usu[0])+" "+ usu[1]+" "+ usu[2]+" "+ str(usu[3])
     if(usuario):
-        print(cadena)
+        txtenc.insert(tk.INSERT,cadena)
     else:
         messagebox.showinfo("usuario no encontrado","usuario no existe en la BD")
-    txtenc.insert(tk.INSERT,cadena)
- 
+
+def ejecutaconsult():
+    personas= controlador.consultarBase()
+    for i in personas:
+        elemets = personas
+        if(personas):
+            tree.insert('', tk.END, text=i)
+        else:
+            messagebox.showinfo("usuarios no encontrados","no hay registros")
+
+
 ventana = tk.Tk()
 ventana.title("Crud de usuarios")
 ventana.geometry("500x300")
@@ -69,6 +78,16 @@ btnBus = tk.Button(pestaña2, text="Buscar", command=ejecutaselectu).pack()
 subBus = tk.Label(pestaña2, text="Encontrado",fg="blue",font=("Modern",15)).pack()
 txtenc=tk.Text(pestaña2,height=5,width=52)
 txtenc.pack()
+
+titulo3 = tk.Label(pestaña3, text='Consultar Usuarios', fg='blue', font=('modern',18))
+titulo.pack()
+
+tap=tk.StringVar()
+txtconsul = tk.Label(pestaña3, text="Mostrar todos los usuarios de la base de datos")
+txtconsul.pack()
+btnConsult = tk.Button(pestaña3, text="Mostrar", command=ejecutaconsult).pack()
+tree=ttk.Treeview(pestaña3)
+tree.pack()
 
 panel.add(pestaña1, text='Formulario de usuarios')
 panel.add(pestaña2, text='Buscar Usuarios')
