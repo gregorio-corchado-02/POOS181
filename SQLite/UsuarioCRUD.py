@@ -27,6 +27,12 @@ def ejecutaconsult():
         else:
             messagebox.showinfo("usuarios no encontrados","no hay registros")
 
+def ejecutaEdit():
+    controlador.editasrUsuario(idBuscada.get(), nombre2.get(), correo2.get(), contrasena2.get())
+
+def ejecutaEliminar():
+    controlador.eliminarUsuario(id3.get())
+
 
 ventana = tk.Tk()
 ventana.title("Crud de usuarios")
@@ -39,6 +45,7 @@ pestaña1 = ttk.Frame(panel)
 pestaña2 = ttk.Frame(panel)
 pestaña3 = ttk.Frame(panel)
 pestaña4 = ttk.Frame(panel)
+pestaña5 = ttk.Frame(panel)
  
 titulo = tk.Label(pestaña1, text='Registro de usuarios', fg='blue', font=('modern',18))
 titulo.pack()
@@ -89,10 +96,52 @@ btnConsult = tk.Button(pestaña3, text="Mostrar", command=ejecutaconsult).pack()
 tree=ttk.Treeview(pestaña3)
 tree.pack()
 
+titulo4 = tk.Label(pestaña4, text='Editar Usuario', fg='blue', font=('modern',18))
+titulo4.pack()
+
+idBuscada = tk.StringVar()
+lblid2 = tk.Label(pestaña4, text="Ingrese la id del usuario que desee modificar")
+lblid2.pack()
+txtid2 = tk.Entry(pestaña4, textvariable=idBuscada)
+txtid2.pack()
+
+nombre2 = tk.StringVar()
+lblNom2 = tk.Label(pestaña4, text="Nuevo Nombre")
+lblNom2.pack()
+txtNom2 = tk.Entry(pestaña4, textvariable=nombre2)
+txtNom2.pack()
+ 
+correo2 = tk.StringVar()
+lblCor2 = tk.Label(pestaña4, text="Nuevo Correo")
+lblCor2.pack()
+txtCor2 = tk.Entry(pestaña4, textvariable=correo2)
+txtCor2.pack()
+ 
+contrasena2 = tk.StringVar()
+lblCon2 = tk.Label(pestaña4, text="Nueva Contraseña")
+lblCon2.pack()
+txtCon2 = tk.Entry(pestaña4, textvariable=contrasena2)
+txtCon2.pack()
+ 
+btnGuardar2 = tk.Button(pestaña4, text="Agregar nuevos datos", command=ejecutaEdit)
+btnGuardar2.pack()
+
+titulo5 = tk.Label(pestaña5, text='Elimina usuario', fg='blue', font=('modern',18))
+titulo5.pack()
+id3 = tk.StringVar()
+lblNom2 = tk.Label(pestaña5, text="Ingresa ID del usuario a eliminar")
+lblNom2.pack()
+txtCor2 = tk.Entry(pestaña5, textvariable=id3)
+txtCor2.pack()
+btnGuardar2 = tk.Button(pestaña5, text="Eliminar Usuario", command=ejecutaEliminar)
+btnGuardar2.pack()
+
 panel.add(pestaña1, text='Formulario de usuarios')
 panel.add(pestaña2, text='Buscar Usuarios')
 panel.add(pestaña3, text='Consultar usuarios')
 panel.add(pestaña4, text='Actualizar Usuarios')
+panel.add(pestaña5, text='Eliminar Usuario')
+
  
 ventana.mainloop()
 

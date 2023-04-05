@@ -69,6 +69,22 @@ class controladorBD:
         cursor.execute(selectQry)
 
         return cursor.fetchall()
+    
+    def editasrUsuario(self,id2,nombre,corrreo,contraseña):
+        conx=self.conexionBD()
+        cursor=conx.cursor()
+        cursor.execute("UPDATE TBRegistrados SET Nombre=?, Correo=?, Contraseña=? WHERE id=?", (nombre, corrreo, contraseña,id2))
+        conx.commit()
+        conx.close()
+
+    def eliminarUsuario (self,id3):
+        conx=self.conexionBD()
+        cursor=conx.cursor()
+        cursor.execute("DELETE FROM TBRegistrados WHERE id=?", (id3,))
+        conx.commit()
+        conx.close()
+         
+
 
             
 
