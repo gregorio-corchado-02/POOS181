@@ -42,10 +42,10 @@ class logica:
         conx.close()
         messagebox.showwarning("Mercancia borrada")
 
-    def consultarBase(self,id3):
+    def consultarBase(self,paism):
         conx=self.conexionBD()
         cursor=conx.cursor()
-        cursor.execute("Select * from TB_Europa where id=?", (id3,))
+        cursor.execute("Select * from TB_Europa where Pais=?", (paism,))
         
         return cursor.fetchall()
         

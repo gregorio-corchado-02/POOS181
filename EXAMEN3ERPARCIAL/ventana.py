@@ -14,7 +14,7 @@ def ejecutaEliminar():
     controlador.eliminarmercancia(id2.get())
 
 def ejecutaconsult():
-    personas= controlador.consultarBase(id3.get())
+    personas= controlador.consultarBase(paism.get())
     for i in personas:
         elemets = personas
         if(personas):
@@ -68,13 +68,13 @@ txtCor2.pack()
 btnGuardar2 = tk.Button(pestaña2, text="Eliminar mercancia", command=ejecutaEliminar)
 btnGuardar2.pack()
 
-titulo3 = tk.Label(pestaña3, text='Consultar Usuarios', fg='blue', font=('modern',18))
+titulo3 = tk.Label(pestaña3, text='Consultar nercancia', fg='blue', font=('modern',18))
 titulo.pack()
 
-id3=tk.StringVar()
+paism=tk.StringVar()
 lblconsul = tk.Label(pestaña3, text="Ingrese la id de la mercancia a buscar")
 lblconsul.pack()
-txtbus = tk.Entry(pestaña3, textvariable=id3)
+txtbus = tk.Entry(pestaña3, textvariable=paism)
 txtbus.pack()
 btnConsult = tk.Button(pestaña3, text="Mostrar", command=ejecutaconsult).pack()
 tree=ttk.Treeview(pestaña3)
