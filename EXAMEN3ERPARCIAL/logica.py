@@ -33,3 +33,19 @@ class logica:
             conx.commit()
             conx.close()
             messagebox.showwarning("Mercancia guardada")
+
+    def eliminarmercancia (self,id2):
+        conx=self.conexionBD()
+        cursor=conx.cursor()
+        cursor.execute("DELETE FROM TB_Europa WHERE id=?", (id2,))
+        conx.commit()
+        conx.close()
+        messagebox.showwarning("Mercancia borrada")
+
+    def consultarBase(self,id3):
+        conx=self.conexionBD()
+        cursor=conx.cursor()
+        cursor.execute("Select * from TB_Europa where id=?", (id3,))
+        
+        return cursor.fetchall()
+        

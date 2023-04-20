@@ -10,6 +10,18 @@ controlador = logica()
 def ejecutaInsert():
     controlador.guardarmercancia(Idm.get(), mercancia.get(), pais.get())
 
+def ejecutaEliminar():
+    controlador.eliminarmercancia(id2.get())
+
+def ejecutaconsult():
+    personas= controlador.consultarBase(id3.get())
+    for i in personas:
+        elemets = personas
+        if(personas):
+            tree.insert('', tk.END, text=i)
+        else:
+            messagebox.showinfo("mercancia no encontrados","no existe")
+
 
 ventana = tk.Tk()
 ventana.title("Crud de Mercancia")
@@ -21,8 +33,6 @@ panel.pack(fill='both', expand='yes')
 pestaña1 = ttk.Frame(panel)
 pestaña2 = ttk.Frame(panel)
 pestaña3 = ttk.Frame(panel)
-pestaña4 = ttk.Frame(panel)
-pestaña5 = ttk.Frame(panel)
  
 titulo = tk.Label(pestaña1, text='Insertar una mercancia', fg='blue', font=('modern',18))
 titulo.pack()
@@ -48,5 +58,29 @@ txtpa.pack()
 btnGuardar = tk.Button(pestaña1, text="Registrar Usuario", command=ejecutaInsert)
 btnGuardar.pack()
 
+titulo2 = tk.Label(pestaña2, text='Elimina mercancia', fg='blue', font=('modern',18))
+titulo2.pack()
+id2 = tk.StringVar()
+lblNom2 = tk.Label(pestaña2, text="Ingresa ID de la mercancia a Eliminar")
+lblNom2.pack()
+txtCor2 = tk.Entry(pestaña2, textvariable=id2)
+txtCor2.pack()
+btnGuardar2 = tk.Button(pestaña2, text="Eliminar mercancia", command=ejecutaEliminar)
+btnGuardar2.pack()
+
+titulo3 = tk.Label(pestaña3, text='Consultar Usuarios', fg='blue', font=('modern',18))
+titulo.pack()
+
+id3=tk.StringVar()
+lblconsul = tk.Label(pestaña3, text="Ingrese la id de la mercancia a buscar")
+lblconsul.pack()
+txtbus = tk.Entry(pestaña3, textvariable=id3)
+txtbus.pack()
+btnConsult = tk.Button(pestaña3, text="Mostrar", command=ejecutaconsult).pack()
+tree=ttk.Treeview(pestaña3)
+tree.pack()
+
 panel.add(pestaña1, text='Insertar una mercancia')
+panel.add(pestaña2, text='Eliminar mercancia')
+panel.add(pestaña3, text='Buscar mercancia')
 ventana.mainloop()
